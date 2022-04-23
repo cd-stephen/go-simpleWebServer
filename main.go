@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+
 func formHandler(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		fmt.Fprintf(w, "ParseForm() err: %v", err)
@@ -24,15 +25,16 @@ func functionHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Method != "GET" {
-		http.Error(w, "method is not supported", http.StatusNotFound)
+		http.Error(w, "This is not a supported METHOD of this function", http.StatusNotFound)
 		return
 	}
 	fmt.Fprintf(w, "this is a function print statement")
 }
 
 func main() {
-	fileServer := http.FileServer(http.Dir("./static"))
-	http.Handle("/", fileServer)
+	// fileServer := http.FileServer(http.Dir("./static"))
+	// http.Handle("/", fileServer)
+	http.Handle("/", http.FileServer(http.Dir("./static")))
 	http.HandleFunc("/form", formHandler)
 	http.HandleFunc("/function", functionHandler)
 
