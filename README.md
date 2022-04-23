@@ -6,7 +6,7 @@ author: cd-stephen
 
 ### Diagram
 
-![sa diagram](img/go-simpleWebServer-v2.3.svg?raw=true "Webapp Service Diagram")
+![sa diagram](./img/go-simpleWebServerv2.3.svg?raw=true "Webapp Service Diagram")
 
 ### Create HTML documents
 1. in the `/static` folder, create a file called `index.html`, and `form.html`.
