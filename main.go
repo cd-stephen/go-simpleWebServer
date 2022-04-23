@@ -11,14 +11,14 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "ParseForm() err: %v", err)
 		return
 	}
-	fmt.Fprintf(w, "POST request successful")
-	name := r.FormValue("name")
-	address := r.FormValue("address")
-	fmt.Fprintf(w, "Name = %s\n", name)
-	fmt.Fprintf(w, "Address = %s\n", address)
+	fmt.Fprintf(w, "POST request successful \n")
+	firstName := r.FormValue("firstName")
+	lastName := r.FormValue("lastName")
+	fmt.Fprintf(w, "First Name = %s\n", firstName)
+	fmt.Fprintf(w, "Last Name = %s\n", lastName)
 }
 
-func funcHandler(w http.ResponseWriter, r *http.Request) {
+func functionHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/function" {
 		http.Error(w, "404 not found", http.StatusNotFound)
 		return
@@ -34,7 +34,7 @@ func main() {
 	fileServer := http.FileServer(http.Dir("./static"))
 	http.Handle("/", fileServer)
 	http.HandleFunc("/form", formHandler)
-	http.HandleFunc("/function", funcHandler)
+	http.HandleFunc("/function", functionHandler)
 
 	fmt.Printf("Starting server at port 8080\n")
 	if err := http.ListenAndServe(":8080", nil); err != nil {

@@ -4,4 +4,4 @@ by cd-stephen
 
 ### Diagram
 
-![sa diagram](img/sa.svg?raw=true "Webapp Service Diagram")
+![sa diagram](img/go-simpleWebServer.svg?raw=true "Webapp Service Diagram")
